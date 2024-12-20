@@ -15,7 +15,7 @@ LoraConfig(
         'up_proj',
         'down_proj'
     ],
-    bias='none', # Specifies whether and how biases are handled in LoRA.
+    bias='none',
     lora_dropout=0.05,
     task_type='CAUSAL_LM'
 )
