@@ -3,13 +3,11 @@ import torch
 from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
-    BitsAndBytesConfig,
-    TrainingArguments,
     Trainer,
     DataCollatorForLanguageModeling
 )
 
-from peft import PeftModel, LoraConfig, get_peft_model, prepare_model_for_kbit_training
+from peft import get_peft_model, prepare_model_for_kbit_training
 
 from fine_tuning.ft_configs import FineTuningConfig
 from fine_tuning.data_preparation import process_dataset
