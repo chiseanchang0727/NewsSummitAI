@@ -21,8 +21,6 @@ LoraConfig(
 )
 ```
 
-## Parameters in `LoraConfig`
-
 ### 1. `r`
 
 - **Definition**: The rank of the low-rank decomposition in LoRA (Low-Rank Adaptation).
