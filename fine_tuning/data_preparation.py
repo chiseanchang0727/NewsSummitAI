@@ -1,7 +1,5 @@
 from functools import partial
 from datasets import Dataset
-from utils.utils import MySQLAgent
-from src.queries.queries import GET_NEWS_INPUT
 from utils.utils import get_db_data
 
 
