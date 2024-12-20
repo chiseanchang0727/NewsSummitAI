@@ -12,7 +12,7 @@ bnb_config = BitsAndBytesConfig(
 
 
 lora_config = LoraConfig(
-    r=16,  # The rank of the low-rank decomposition in LoRA (Low-Rank Adaptation)
+    r=16, 
     lora_alpha=16,
     target_modules=[
         'q_proj',

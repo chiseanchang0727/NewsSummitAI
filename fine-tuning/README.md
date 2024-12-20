@@ -1,5 +1,26 @@
 # Explanation of `LoraConfig` Parameters
 
+use following as example:
+
+```
+LoraConfig(
+    r=16,
+    lora_alpha=16,
+    target_modules=[
+        'q_proj',
+        'k_proj',
+        'v_proj',
+        'o_proj',
+        'gate_proj',
+        'up_proj',
+        'down_proj'
+    ],
+    bias='none', # Specifies whether and how biases are handled in LoRA.
+    lora_dropout=0.05,
+    task_type='CAUSAL_LM'
+)
+```
+
 ## Parameters in `LoraConfig`
 
 ### 1. `r`
