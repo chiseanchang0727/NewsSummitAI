@@ -3,6 +3,17 @@ import pandas as pd
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 
+
+
+
+def get_db_data(query) -> pd.DataFrame:
+    sql_agent = MySQLAgent()
+
+    df = sql_agent.read_table(query)
+
+    return df
+
+
 class MySQLAgent:
     
     def __init__(self) -> None:

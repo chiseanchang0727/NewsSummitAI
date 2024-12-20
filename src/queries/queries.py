@@ -13,3 +13,8 @@ NOV_50_NEWS="""
     WHERE MONTH(news_date) = 11 AND YEAR(news_date) = 2024
     LIMIT 50
 """
+
+GET_NEWS_INPUT="""
+    SELECT content, content_summary
+    FROM news_summary
+"""

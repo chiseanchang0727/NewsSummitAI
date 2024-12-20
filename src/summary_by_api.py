@@ -4,21 +4,13 @@ from src.queries.queries import NOV_NEWS_TEST, NOV_50_NEWS
 from llm_api.config.llm_config import LLMConfig
 from llm_api.summary_bot import SummaryBot
 from llm_api.prompts.prompts import SUMMARY_PROMPT
-
-def read_db_news(query):
-    sql_agent = MySQLAgent()
-
-    df = sql_agent.read_table(query)
-
-    return df
-
-
+from utils.utils import get_db_data
 
 def genearte_summary_by_api():
 
     summary_bot = SummaryBot(config=LLMConfig())
 
-    df_news = read_db_news(query=NOV_NEWS_TEST)
+    df_news = get_db_data(query=NOV_NEWS_TEST)
 
     df_news['content_summary'] = ""
 
