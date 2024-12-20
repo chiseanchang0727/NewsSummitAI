@@ -16,6 +16,12 @@ from fine_tuning.data_preparation import process_dataset
 from fine_tuning.utils import find_all_linear_names, count_parameters
 
 def peft_fine_tuning(config: FineTuningConfig, dataset):
+            
+    tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side='left', add_eos_token=True, add_bos_token=True, use_fast=False)
+    tokenizer.pad_token = tokenizer.eos_token
+    max_length = 2048
+    process_data = process_dataset(tokenizer, max_length, dataset)  
+
     device_map = {"": 0} if torch.cuda.is_available() else {"": "cpu"}
 
     model_name = config.model_name
@@ -27,13 +33,6 @@ def peft_fine_tuning(config: FineTuningConfig, dataset):
         trust_remote_code=True,
         use_auth_token=True
     )
-
-        
-    tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side='left', add_eos_token=True, add_bos_token=True, use_fast=False)
-    tokenizer.pad_token = tokenizer.eos_token
-
-    max_length = 2048
-    process_data = process_dataset(tokenizer, max_length, dataset)  
 
     train_dataset, eval_dataset = process_data['train'].train_test_split(test_size=0.2).values()
     original_model = prepare_model_for_kbit_training(original_model)
